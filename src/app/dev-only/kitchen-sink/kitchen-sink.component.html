@@ -1,1 +1,42 @@
-<p>kitchen-sink works!</p>
+<main>
+    <section>
+        <h1>Them kitchen sink</h1>
+    </section>
+
+    <section>
+        <h1>Slider</h1>
+
+        <mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+    </section>
+
+
+    <section>
+        <h1>Address form</h1>
+        <app-example-adress-form></app-example-adress-form>
+    </section>
+
+    <section id="navigation">
+        <h1>Navigation</h1>
+        <a [routerLink]="['side-bar-example']">Click here to visit an example</a>
+    </section>
+
+    <section>
+        <h1>Example table</h1>
+        <app-example-table></app-example-table>
+    </section>
+
+    <section>
+        <h1>Example dashboard</h1>
+        <app-example-dashboard></app-example-dashboard>
+    </section>
+
+    <section>
+        <h1>Example tree</h1>
+        <app-example-tree></app-example-tree>
+    </section>
+
+    <section>
+        <h1>Example drag-drop</h1>
+        <app-example-drag-drop></app-example-drag-drop>
+    </section>
+</main>
