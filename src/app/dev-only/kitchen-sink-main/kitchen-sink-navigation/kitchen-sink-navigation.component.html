@@ -15,6 +15,14 @@
 
       <!-- Toolbar content -->
       <span class="brand">comic-reader</span>
+
+      <div class="top-buttons">
+        <button mat-button [matMenuTriggerFor]="themeMenu">Theme</button>
+        <mat-menu #themeMenu>
+          <button mat-menu-item (click)="enableTheme('light')">Light mode</button>
+          <button mat-menu-item (click)="enableTheme('dark')">Dark mode</button>
+        </mat-menu>
+      </div>
     </mat-toolbar>
 
     <!-- Site content -->

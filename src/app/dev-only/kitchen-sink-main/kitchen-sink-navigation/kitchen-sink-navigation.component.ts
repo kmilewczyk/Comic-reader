@@ -1,22 +1,30 @@
-import { Component, ElementRef, Input } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Component, ElementRef, Input } from '@angular/core'
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
+import { Observable } from 'rxjs'
+import { map, shareReplay } from 'rxjs/operators'
+
 
 @Component({
   selector: 'app-kitchen-sink-navigation',
   templateUrl: './kitchen-sink-navigation.component.html',
-  styleUrls: ['./kitchen-sink-navigation.component.scss']
+  styleUrls: ['./kitchen-sink-navigation.component.scss'],
 })
 export class KitchenSinkNavigationComponent {
-  @Input() content?: ElementRef;
+  @Input() content?: ElementRef
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map((result) => result.matches),
+    shareReplay()
+  )
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
+  enableTheme(theme: 'dark' | 'light') {
+    const actions = {
+      light: () => document.querySelector('body')?.classList.remove('dark-theme'),
+      dark: () => document.querySelector('body')?.classList.add('dark-theme'),
+    }
+
+    actions[theme]();
+  }
 }
