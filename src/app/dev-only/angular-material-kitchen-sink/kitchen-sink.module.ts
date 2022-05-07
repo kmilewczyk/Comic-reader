@@ -142,4 +142,4 @@ import { ExampleToolbarsComponent } from './example-toolbars/example-toolbars.co
     MatTabsModule
   ],
 })
-export class KitchenSinkModule {}
+export class AngularKitchenSinkModule {}
