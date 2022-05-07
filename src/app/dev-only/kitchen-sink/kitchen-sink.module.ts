@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatSelectModule } from '@angular/material/select'
 import { MatRadioModule } from '@angular/material/radio'
 import { MatCardModule } from '@angular/material/card'
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ExampleNavigationComponent } from './example-navigation/example-navigation.component'
 import { LayoutModule } from '@angular/cdk/layout'
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -39,7 +39,34 @@ import { BottomSheetOverviewExampleComponent } from './bottom-sheet-overview-exa
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet'
 import { ExampleButtonsComponent } from './example-buttons/example-buttons.component'
 import { ExampleButtonToggleComponent } from './example-button-toggle/example-button-toggle.component'
-import { MatButtonToggleModule } from '@angular/material/button-toggle'
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ExampleCheckboxComponent } from './example-checkbox/example-checkbox.component'
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ExampleChipsComponent } from './example-chips/example-chips.component' 
+import { MatChipsModule } from '@angular/material/chips';
+import { ExampleDatepickerComponent } from './example-datepicker/example-datepicker.component'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { ExampleDialogComponent } from './example-dialog/example-dialog.component';
+import { ExampleDialogDialogComponent } from './example-dialog-dialog/example-dialog-dialog.component'
+import { MatDialogModule } from '@angular/material/dialog';
+import { ExampleExpansionPanelComponent } from './example-expansion-panel/example-expansion-panel.component'
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ExampleSelectionListComponent } from './example-selection-list/example-selection-list.component'
+import { MatProgressBarModule } from '@angular/material/progress-bar' 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ExampleRipplesComponent } from './example-ripples/example-ripples.component' 
+import { MatRippleModule } from '@angular/material/core';
+import { ExampleTogglesComponent } from './example-toggles/example-toggles.component' 
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ExampleLabaledSliderComponent } from './example-labaled-slider/example-labaled-slider.component';
+import { ExampleSnackbarComponent } from './example-snackbar/example-snackbar.component' 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ExampleStepperComponent } from './example-stepper/example-stepper.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { ExampleTabsComponent } from './example-tabs/example-tabs.component' 
+import { MatTabsModule } from '@angular/material/tabs';
+import { ExampleToolbarsComponent } from './example-toolbars/example-toolbars.component' 
 
 @NgModule({
   declarations: [
@@ -58,6 +85,20 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
     BottomSheetOverviewExampleComponent,
     ExampleButtonsComponent,
     ExampleButtonToggleComponent,
+    ExampleCheckboxComponent,
+    ExampleChipsComponent,
+    ExampleDatepickerComponent,
+    ExampleDialogComponent,
+    ExampleDialogDialogComponent,
+    ExampleExpansionPanelComponent,
+    ExampleSelectionListComponent,
+    ExampleRipplesComponent,
+    ExampleTogglesComponent,
+    ExampleLabaledSliderComponent,
+    ExampleSnackbarComponent,
+    ExampleStepperComponent,
+    ExampleTabsComponent,
+    ExampleToolbarsComponent,
   ],
   imports: [
     CommonModule,
@@ -85,6 +126,20 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
     MatBadgeModule,
     MatBottomSheetModule,
     MatButtonToggleModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRippleModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatStepperModule,
+    MatTabsModule
   ],
 })
 export class KitchenSinkModule {}
