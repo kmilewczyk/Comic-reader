@@ -1,17 +1,11 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+<mat-sidenav-container class="sidenav-container" *ngrxLet="isHandset$ as isHandset">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="isHandset ? 'dialog' : 'navigation'"
+    [mode]="isHandset ? 'over' : 'side'" [opened]="isHandset === false">
     <ng-content select="[side-nav]"></ng-content>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle side navigation"
-        mat-icon-button
-        (click)="drawer.toggle()">
+      <button type="button" aria-label="Toggle side navigation" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
 
