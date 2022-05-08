@@ -1,0 +1,31 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <mat-toolbar>Select sink</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['material']" routerLinkActive="active"><span>Angular material</span></a>
+      <a mat-list-item href="#"><span>Custom components</span></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" style="z-index: 99">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <!-- Toolbar content -->
+      <span class="brand">comic-reader</span>
+
+      <div class="top-buttons">
+        <button mat-button [matMenuTriggerFor]="themeMenu">Theme</button>
+        <mat-menu #themeMenu>
+          <button mat-menu-item (click)="enableTheme('light')">Light mode</button>
+          <button mat-menu-item (click)="enableTheme('dark')">Dark mode</button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+
+    <!-- Site content -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

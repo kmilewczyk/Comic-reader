@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -12,28 +11,51 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$comic-reader-primary: mat.define-palette(mat.$indigo-palette);
-$comic-reader-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$comic-reader-warn: mat.define-palette(mat.$red-palette);
+$light-primary: mat.define-palette(mat.$yellow-palette, 600, 50, 900);
+$light-accent: mat.define-palette(mat.$light-blue-palette, 900, 600);
+$light-warn: mat.define-palette(mat.$deep-orange-palette, A400, A100, A700);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$comic-reader-theme: mat.define-light-theme((
-  color: (
-    primary: $comic-reader-primary,
-    accent: $comic-reader-accent,
-    warn: $comic-reader-warn,
-  )
-));
+$light-theme: mat.define-light-theme((color: (primary: $light-primary,
+        accent: $light-accent,
+        warn: $light-warn,
+      )));
+
+$dark-primary: mat.define-palette(mat.$lime-palette);
+$dark-accent: mat.define-palette(mat.$purple-palette, 200, 100);
+$dark-warn: mat.define-palette(mat.$red-palette, 200, A100, A700);
+
+$dark-theme: mat.define-dark-theme((color: (primary: $dark-primary, accent: $dark-accent, warn: $dark-warn)));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($comic-reader-theme);
+@include mat.all-component-themes($light-theme);
 
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  &.dark-theme {
+    @include mat.all-component-colors($dark-theme);
+
+    a {
+      color: #aaf
+    }
+
+    .mat-drawer-container {
+      background-color: #202020
+    }
+
+    .mat-toolbar.mat-primary {
+      background: #333;
+      color: white;
+    }
+  }
+}
