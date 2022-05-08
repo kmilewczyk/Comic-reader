@@ -60,6 +60,10 @@
                 {
                   "replace": "src/app/routes.ts",
                   "with": "src/app/routes.prod.ts"
+                },
+                {
+                  "replace": "src/app/app-imports.ts",
+                  "with": "src/app/app-imports.prod.ts"
                 }
               ],
               "outputHashing": "all"
