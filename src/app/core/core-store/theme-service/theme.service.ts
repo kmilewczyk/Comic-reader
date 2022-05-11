@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
-import { Theme } from '@app/core/enums'
-import { Dispatchable } from '@app/core/models';
+import { Theme } from '@app/core/_enums'
+import { Dispatchable } from '@app/core/_models';
 import { EMPTY, Observable, of } from 'rxjs';
 import { ConfigChangeDispatcherService } from '../config-change-dispatcher/config-change-dispatcher.service';
 

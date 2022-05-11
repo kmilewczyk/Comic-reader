@@ -1,4 +1,4 @@
-import { Theme } from "@app/core/enums"
+import { Theme } from "@app/core/_enums"
 
 export interface UserConfiguration {
   'ui.theme': Theme

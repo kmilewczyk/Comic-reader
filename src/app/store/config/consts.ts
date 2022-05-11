@@ -1,4 +1,4 @@
-import { Theme } from "@app/core/enums";
+import { Theme } from "@app/core/_enums";
 import { UserConfiguration } from "./models";
 
 export const CONFIG_FEATURE_NAME = 'config';

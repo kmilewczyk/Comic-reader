@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing'
-import { Theme } from '@app/core/enums'
+import { Theme } from '@app/core/_enums'
 import { UserConfiguration } from '@app/store/config/models'
 import { firstValueFrom, of, single, toArray } from 'rxjs'
 

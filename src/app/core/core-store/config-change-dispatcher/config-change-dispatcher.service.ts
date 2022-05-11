@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Dispatcher } from '@app/core/models'
+import { Dispatcher } from '@app/core/_models'
 import { UserConfiguration } from '@app/store/config/models'
 import { catchError, filter, map, mergeAll, Observable, of } from 'rxjs'
 
