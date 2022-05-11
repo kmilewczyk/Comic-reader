@@ -1,9 +1,16 @@
+$tablet-break: 768px;
+$desktop-break: 1000px;
+$large-desktop-break: 1400px;
+
+$top-toolbar: 3.5rem;
+$sidenav-width: 200px;
+
 .sidenav-container {
   height: 100%;
 }
 
 .sidenav {
-  width: 200px;
+  width: $sidenav-width;
 }
 
 .sidenav .mat-toolbar {
@@ -14,8 +21,15 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  height: $top-toolbar;
 }
 
 [menu-toggle] {
   margin-right: 16px;
+}
+
+.content-wrapper {
+  margin: auto;
+  width: 100%;
+  min-height: calc(100vh - #{$top-toolbar} - 2rem);
 }
