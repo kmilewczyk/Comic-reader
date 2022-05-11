@@ -1,13 +1,24 @@
 import { Injectable } from '@angular/core'
 import { Dispatcher } from '@app/core/models'
 import { UserConfiguration } from '@app/store/config/models'
-import { filter, map, mergeAll, Observable, of } from 'rxjs'
+import { catchError, filter, map, mergeAll, Observable, of } from 'rxjs'
+
+export enum DisptachErrorType {
+  NoCallbacks = 'no_callbacks_error',
+  CallbackError = 'dispatcher_error',
+}
+
+export interface DispatchError {
+  type: DisptachErrorType
+  error: Error
+}
 
 type ConfigKey = keyof UserConfiguration
 
 type ConfigValue<T extends ConfigKey> = UserConfiguration[T]
 
-type ChangeCallbackReturn = Observable<void>
+type ChangeCallbackReturn = Promise<void>
+type DispatchObservable = Observable<void>
 
 type ChangeCallback<T> = (configValue: T) => ChangeCallbackReturn
 
@@ -23,15 +34,28 @@ export class ConfigChangeDispatcherService implements Dispatcher {
 
   register<T extends ConfigKey>(configKey: T, callback: ChangeCallback<ConfigValue<T>>) {
     // Without the 'as' typescript gets aneurysm.
-    this.changeCallbacks[configKey] = callback as ChangeCallback<ConfigValue<ConfigKey>>;
+    this.changeCallbacks[configKey] = callback as ChangeCallback<ConfigValue<ConfigKey>>
   }
 
-  dispatch(change: Partial<UserConfiguration>): ChangeCallbackReturn {
+  dispatch(change: Partial<UserConfiguration>): DispatchObservable {
     const keys = Object.keys(change) as ConfigKey[]
+
     return of(...keys).pipe(
-      filter((key) => key in this.changeCallbacks),
-      map((key) => this.changeCallbacks[key]!(change[key]!)),
-      mergeAll()
+      map((key) => {
+        if (this.changeCallbacks[key] === undefined) {
+          throw { type: DisptachErrorType.NoCallbacks, value: `No callbacks for key "${key}"` }
+        }
+
+        return this.changeCallbacks[key]!(change[key]!)
+      }),
+      mergeAll(),
+      catchError((error) => {
+        if (error?.type === DisptachErrorType.NoCallbacks) {
+          throw error
+        }
+
+        throw { type: DisptachErrorType.CallbackError, value: error }
+      })
     )
   }
 }

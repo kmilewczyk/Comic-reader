@@ -11,14 +11,8 @@ import { Theme } from '../enums';
 export class AppContainerComponent implements OnInit {
   Theme = Theme;
 
-  selectConfig$ = this.store.select(selectConfig);
-
-  constructor(private store: Store<StoreConfigSlice>) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  setTheme(theme: Theme) {
-    this.store.dispatch(ConfigApiActions.ChangeConfig({ 'ui.theme': theme }))
   }
 }

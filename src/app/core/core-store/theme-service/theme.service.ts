@@ -14,7 +14,7 @@ export class ThemeService implements Dispatchable {
     dispatcher.register('ui.theme', (theme) => this.setTheme(theme))
   }
 
-  setTheme(theme: Theme): Observable<void> {
+  async setTheme(theme: Theme): Promise<void> {
     switch (theme) {
       case Theme.Dark:
         document.querySelector('body')?.classList.add('dark-theme');
@@ -23,7 +23,5 @@ export class ThemeService implements Dispatchable {
         document.querySelector('body')?.classList.remove('dark-theme');
         break
     }
-
-    return EMPTY;
   }
 }

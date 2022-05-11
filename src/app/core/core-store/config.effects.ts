@@ -26,6 +26,6 @@ export class ConfigEffects {
     private dispatcher: ConfigChangeDispatcherService,
     private themeService: ThemeService,
   ) {
-    themeService.setDispatch(dispatcher);
+    this.themeService.setDispatch(dispatcher);
   }
 }

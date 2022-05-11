@@ -1,6 +1,3 @@
 <app-side-nav-container>
     <router-outlet></router-outlet>
-    <button (click)="setTheme(Theme.Light)">Light</button>
-    <button (click)="setTheme(Theme.Dark)">Dark</button>
-    {{ (selectConfig$ | async)?.['ui.theme'] }}
 </app-side-nav-container>
