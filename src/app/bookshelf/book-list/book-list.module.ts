@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookListComponent } from './book-list.component';
 import { BookListRoutingModule } from './book-list-routing.module';
+import { LoaderOverlayModule } from '@app/misc/loader-overlay/loader-overlay.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { BookListRoutingModule } from './book-list-routing.module';
   ],
   imports: [
     CommonModule,
-    BookListRoutingModule
+    BookListRoutingModule,
+    LoaderOverlayModule
   ]
 })
 export class BookListModule { }

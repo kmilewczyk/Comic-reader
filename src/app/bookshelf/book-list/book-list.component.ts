@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Subject } from 'rxjs'
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class BookListComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
   }
 
+  ngOnInit(): void { }
 }
