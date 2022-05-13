@@ -1,0 +1,15 @@
+@use "app-mixins" as m;
+
+:host {
+    @include m.blurred-background();
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.dropdown-hint {
+    height: 100%;
+    width: 100%;
+
+}

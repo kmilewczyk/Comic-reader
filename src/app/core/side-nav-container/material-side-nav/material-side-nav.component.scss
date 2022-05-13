@@ -31,5 +31,6 @@ $sidenav-width: 200px;
 .content-wrapper {
   margin: auto;
   width: 100%;
-  min-height: calc(100vh - #{$top-toolbar} - 2rem);
+  min-height: calc(100vh - #{$top-toolbar});
+  position: relative;
 }
