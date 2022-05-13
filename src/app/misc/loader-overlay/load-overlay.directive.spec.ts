@@ -36,7 +36,7 @@ describe('LoadOverlayDirective', () => {
     expect(parentDiv.style.position).toEqual('relative')
   })
 
-  it('should add and remove overlay on the value changes', () => {
+  it('adds and removes overlay on the value changes', () => {
     fixture.componentInstance.showOverlay = true
     fixture.detectChanges()
     let overlay = parentDiv.querySelectorAll('app-load-overlay')
@@ -48,7 +48,6 @@ describe('LoadOverlayDirective', () => {
     expect(overlay.length).toEqual(1)
 
     fixture.componentInstance.showOverlay = false
-    fixture.detectChanges()
     fixture.detectChanges()
     overlay = parentDiv.querySelectorAll('app-load-overlay')
     expect(overlay.length).toEqual(0)

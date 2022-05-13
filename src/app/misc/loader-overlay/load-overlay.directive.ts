@@ -13,6 +13,7 @@ export class LoadOverlayDirective implements OnDestroy {
   private loading$ = new Subject<boolean>()
   private element: HTMLElement | null = this.target.element.nativeElement;
   private parent?: HTMLElement | null = this.element?.parentElement;
+  private overlay?: HTMLElement;
 
   constructor(private target: ViewContainerRef) {
     this.setPosition('relative')
@@ -25,23 +26,16 @@ export class LoadOverlayDirective implements OnDestroy {
   }
 
   private onLoadChange(loading: boolean): void {
-    const overlay = this.parent?.querySelector('app-load-overlay')
-
     if (!loading) {
-      return void overlay?.remove()
+      return void this.overlay?.remove()
     }
 
-    if (!overlay) {
-      return void this.target.createComponent(LoadOverlayComponent)
+    if (!this.overlay) {
+      this.overlay = this.target.createComponent(LoadOverlayComponent).location.nativeElement;
     }
-
   }
 
   private setPosition(value: string) {
     this.parent?.style.setProperty('position', value)
-  }
-
-  private getPosition() {
-    return this.parent?.style.position
   }
 }
