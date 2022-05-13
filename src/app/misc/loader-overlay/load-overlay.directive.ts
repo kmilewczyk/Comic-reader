@@ -12,37 +12,36 @@ export class LoadOverlayDirective implements OnDestroy {
 
   private loading$ = new Subject<boolean>()
   private element: HTMLElement | null = this.target.element.nativeElement;
-  private originalPosition?: string
+  private parent?: HTMLElement | null = this.element?.parentElement;
 
   constructor(private target: ViewContainerRef) {
-    this.originalPosition = this.getPosition();
-
     this.setPosition('relative')
 
-    this.loading$.pipe(distinct()).subscribe((loading) => this.onLoadChange(loading))
+    this.loading$.subscribe((loading) => this.onLoadChange(loading))
   }
 
   ngOnDestroy(): void {
     this.loading$.complete()
-
-    if (this.originalPosition) this.setPosition(this.originalPosition)
   }
 
   private onLoadChange(loading: boolean): void {
-    const overlay = this.element?.querySelector('app-load-overlay')
+    const overlay = this.parent?.querySelector('app-load-overlay')
 
-    if (loading && !overlay) {
+    if (!loading) {
+      return void overlay?.remove()
+    }
+
+    if (!overlay) {
       return void this.target.createComponent(LoadOverlayComponent)
     }
 
-    overlay?.remove()
   }
 
   private setPosition(value: string) {
-    this.element?.parentElement?.style.setProperty('position', value)
+    this.parent?.style.setProperty('position', value)
   }
 
   private getPosition() {
-    return this.element?.parentElement?.style.position
+    return this.parent?.style.position
   }
 }
