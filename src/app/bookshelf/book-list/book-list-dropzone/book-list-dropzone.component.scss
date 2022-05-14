@@ -1,19 +1,19 @@
 @use "app-mixins" as m;
 
 :host {
-    @include m.blurred-background();
-    @include m.absolute-full();
+    min-height: 100%;
+    width: 100%;
 }
 
 .backdrop {
-    @include m.absolute-full();
+    @include m.blurred-background();
+    @include m.absolute-full-center();
 
     opacity: 0.5;
 }
 
 .dropdown-hint {
-    @include m.absolute-center();
-    @include m.absolute-full();
+    @include m.absolute-full-center();
 
     max-height: 150px;
     max-width: 150px;

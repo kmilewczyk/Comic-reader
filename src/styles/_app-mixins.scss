@@ -15,3 +15,12 @@
     height: 100%;
     width: 100%;
 }
+
+@mixin absolute-full-center() {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

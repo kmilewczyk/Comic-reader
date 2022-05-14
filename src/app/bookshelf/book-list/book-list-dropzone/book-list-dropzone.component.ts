@@ -14,10 +14,9 @@ import { OpacityFade, opacityFade } from './opacity-fade.animation'
   templateUrl: './book-list-dropzone.component.html',
   styleUrls: ['./book-list-dropzone.component.scss'],
   animations: [opacityFade],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookListDropzoneComponent implements OnDestroy {
-  visible: OpacityFade = OpacityFade.Hide
+  visible: boolean = false
 
   private dragover$ = new Subject<void>()
 
@@ -30,20 +29,15 @@ export class BookListDropzoneComponent implements OnDestroy {
     this.dragover$.complete()
   }
 
-  @HostBinding('@appOpacityFade')
-  get opacityFade() {
-    return this.visible;
-  }
-
   // NOTE: Run out of Angular
   private updateOnDropdownVisibility() {
     const setVisible = () => {
-      if (this.visible === OpacityFade.Hide) {
-        this.zone.run(() => (this.visible = OpacityFade.Visible))
+      if (!this.visible) {
+        this.zone.run(() => (this.visible = true))
       }
     }
 
-    const setHide = () => this.zone.run(() => (this.visible = OpacityFade.Hide))
+    const setHide = () => this.zone.run(() => (this.visible = false))
 
     this.dragover$.pipe(tap(setVisible), debounceTime(100)).subscribe(setHide)
   }

@@ -6,17 +6,6 @@ export enum OpacityFade {
 }
 
 export const opacityFade = trigger('appOpacityFade', [
-  state(
-    OpacityFade.Visible,
-    style({
-      opacity: 1,
-    })
-  ),
-  state(
-    OpacityFade.Hide,
-    style({
-      opacity: 0,
-    })
-  ),
-  transition(`${OpacityFade.Visible} <=> ${OpacityFade.Hide}`, [animate('0.5s')]),
+  transition(':enter', [style({ opacity: 0 }), animate('0.1s')]),
+  transition(':leave', [animate('0.1s'), style({ opacity: 0 })]),
 ])

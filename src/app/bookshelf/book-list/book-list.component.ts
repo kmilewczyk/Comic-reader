@@ -4,22 +4,10 @@ import { Subject } from 'rxjs'
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styles: [
-    `
-      :host {
-        position: absolute;
-        display: flex;
-        height: 100%;
-        width: 100%;
-        margin: 0;
-      }
-    `,
-  ],
+  styleUrls: ['./book-list.component.scss']
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent {
+  books = Array.from({ length: 20 }, () => 1)
+
   constructor() {}
-
-  ngOnDestroy(): void {}
-
-  ngOnInit(): void {}
 }

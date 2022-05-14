@@ -1,1 +1,7 @@
-<app-book-list-dropzone></app-book-list-dropzone>
+<app-book-list-dropzone>
+    <mat-grid-list cols="6" rowHeight="3:4" gutterSize="10">
+        <mat-grid-tile *ngFor="let book of books">
+            <app-book></app-book>
+        </mat-grid-tile>
+    </mat-grid-list>
+</app-book-list-dropzone>

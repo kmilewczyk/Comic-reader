@@ -1,0 +1,9 @@
+@use 'app-mixins' as m;
+
+:host {
+    @include m.absolute-full();
+}
+
+mat-card {
+    @include m.absolute-full();
+}

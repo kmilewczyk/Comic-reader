@@ -1,0 +1,18 @@
+@use "app-mixins" as m;
+
+$hostPadding: 10px;
+
+:host {
+    padding: $hostPadding;
+
+    display: flex;
+    margin: 0;
+}
+
+mat-grid-list {
+    width: 100%;
+
+    app-card {
+        @include m.absolute-full();
+    }
+}
