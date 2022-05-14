@@ -7,7 +7,7 @@ import {
   OnDestroy,
 } from '@angular/core'
 import { debounceTime, Subject, tap } from 'rxjs'
-import { OpacityFade, opacityFade } from './opacity-fade.animation'
+import { OpacityFade, opacityFade } from '../../../misc/_animations/opacity-fade.animation'
 
 @Component({
   selector: 'app-book-list-dropzone',
