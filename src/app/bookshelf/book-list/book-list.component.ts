@@ -8,7 +8,7 @@ import { Subject } from 'rxjs'
     `
       :host {
         position: absolute;
-        display: block;
+        display: flex;
         height: 100%;
         width: 100%;
         margin: 0;
