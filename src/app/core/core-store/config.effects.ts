@@ -3,7 +3,7 @@ import { ConfigApiActions } from '@app/store/config/config.actions'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { defaultIfEmpty, exhaustMap, ignoreElements, mergeAll, of, tap } from 'rxjs'
 import { ConfigChangeDispatcherService } from './config-change-dispatcher/config-change-dispatcher.service'
-import { ThemeService } from './theme-service/theme.service'
+import { ThemeService } from '../_services/theme/theme.service'
 
 
 

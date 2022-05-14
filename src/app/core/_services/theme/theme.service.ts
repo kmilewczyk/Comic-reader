@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Theme } from '@app/core/_enums'
 import { Dispatchable } from '@app/core/_models';
 import { EMPTY, Observable, of } from 'rxjs';
-import { ConfigChangeDispatcherService } from '../config-change-dispatcher/config-change-dispatcher.service';
+import { ConfigChangeDispatcherService } from '../../core-store/config-change-dispatcher/config-change-dispatcher.service';
 
 @Injectable({
   providedIn: 'root',
