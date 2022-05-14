@@ -17,7 +17,7 @@ import { OpacityFade, opacityFade } from './opacity-fade.animation'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookListDropzoneComponent implements OnDestroy {
-  visible: OpacityFade = OpacityFade.Visible
+  visible: OpacityFade = OpacityFade.Hide
 
   private dragover$ = new Subject<void>()
 
@@ -31,8 +31,8 @@ export class BookListDropzoneComponent implements OnDestroy {
   }
 
   @HostBinding('@appOpacityFade')
-  get changeVisibility() {
-    return this.visible
+  get opacityFade() {
+    return this.visible;
   }
 
   // NOTE: Run out of Angular

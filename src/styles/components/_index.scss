@@ -1,0 +1,5 @@
+@use "./app-theme-background" as app-theme-background;
+
+@mixin theme($theme) {
+    @include app-theme-background.theme($theme);
+}

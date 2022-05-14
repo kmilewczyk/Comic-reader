@@ -2,26 +2,32 @@
 
 :host {
     @include m.blurred-background();
+    @include m.absolute-full();
+}
 
-    position: absolute;
-    width: 100%;
-    height: 100%;
+.backdrop {
+    @include m.absolute-full();
+
+    opacity: 0.5;
 }
 
 .dropdown-hint {
     @include m.absolute-center();
+    @include m.absolute-full();
 
-    height: 100%;
-    width: 100%;
     max-height: 150px;
     max-width: 150px;
 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
+    opacity: 0.9;
     
     border-radius: 10px;
     padding: 1rem;
+
+    filter: contrast(0.8);
 
     mat-icon {
         width: auto;
@@ -31,6 +37,7 @@
 
     span {
         width: 100%;
+        text-align: center;
         font-size: x-large;
     }
 }
