@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core'
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 import { Observable } from 'rxjs'
 import { map, shareReplay } from 'rxjs/operators'
+import { DeviceService } from '@app/core/_services/device/device.service'
 
 @Component({
   selector: 'app-material-side-nav',
@@ -11,10 +12,7 @@ import { map, shareReplay } from 'rxjs/operators'
 export class MaterialSideNavComponent {
   @Input() sideNavTitle?: string
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map((result) => result.matches),
-    shareReplay()
-  )
+  isHandset$ = this.device.isHandset$;
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private device: DeviceService) {}
 }

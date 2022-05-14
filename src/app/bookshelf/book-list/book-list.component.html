@@ -1,5 +1,5 @@
 <app-book-list-dropzone>
-    <mat-grid-list cols="6" rowHeight="3:4" gutterSize="10">
+    <mat-grid-list [cols]="cols$ | async" rowHeight="3:4" gutterSize="10">
         <mat-grid-tile *ngFor="let book of books">
             <app-book></app-book>
         </mat-grid-tile>
