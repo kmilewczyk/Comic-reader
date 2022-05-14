@@ -5,5 +5,8 @@
 }
 
 mat-card {
-    @include m.absolute-full();
+    @include m.absolute-center();
+    height: calc(100% - 30px);
+    width: calc(100% - 30px);
+    padding: 10px;
 }
