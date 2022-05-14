@@ -3,3 +3,10 @@
     background: rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 10px 1px grey;
 }
+
+@mixin absolute-center() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

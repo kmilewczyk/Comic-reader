@@ -4,6 +4,7 @@ import { BookListComponent } from './book-list.component';
 import { BookListRoutingModule } from './book-list-routing.module';
 import { LoaderOverlayModule } from '@app/misc/loader-overlay/loader-overlay.module';
 import { BookListDropzoneComponent } from './book-list-dropzone/book-list-dropzone.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { BookListDropzoneComponent } from './book-list-dropzone/book-list-dropzo
   imports: [
     CommonModule,
     BookListRoutingModule,
-    LoaderOverlayModule
+    LoaderOverlayModule,
+    MatIconModule
   ]
 })
 export class BookListModule { }

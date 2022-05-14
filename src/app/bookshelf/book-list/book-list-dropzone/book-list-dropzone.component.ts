@@ -17,7 +17,7 @@ import { OpacityFade, opacityFade } from './opacity-fade.animation'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookListDropzoneComponent implements OnDestroy {
-  visible: OpacityFade = OpacityFade.Hide
+  visible: OpacityFade = OpacityFade.Visible
 
   private dragover$ = new Subject<void>()
 
@@ -58,14 +58,14 @@ export class BookListDropzoneComponent implements OnDestroy {
   }
 
   private onDragOver(event: DragEvent) {
-    event.stopImmediatePropagation()
     event.preventDefault()
+    event.stopImmediatePropagation()
     this.dragover$.next()
   }
 
   private onDrop(event: DragEvent) {
-    event.stopImmediatePropagation()
     event.preventDefault()
+    event.stopImmediatePropagation()
     console.log('drop')
   }
 }
