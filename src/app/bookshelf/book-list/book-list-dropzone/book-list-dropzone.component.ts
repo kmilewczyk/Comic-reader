@@ -1,5 +1,12 @@
-import { Component, HostBinding, HostListener, OnDestroy, OnInit } from '@angular/core'
-import { debounce, debounceTime, delay, of, Subject, switchMap, tap } from 'rxjs'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostBinding,
+  NgZone,
+  OnDestroy,
+} from '@angular/core'
+import { debounceTime, Subject, tap } from 'rxjs'
 import { OpacityFade, opacityFade } from './opacity-fade.animation'
 
 @Component({
@@ -7,28 +14,20 @@ import { OpacityFade, opacityFade } from './opacity-fade.animation'
   templateUrl: './book-list-dropzone.component.html',
   styleUrls: ['./book-list-dropzone.component.scss'],
   animations: [opacityFade],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookListDropzoneComponent implements OnDestroy {
   visible: OpacityFade = OpacityFade.Hide
 
-  private flashVisible$ = new Subject<void>()
+  private dragover$ = new Subject<void>()
 
-  constructor() {
-    this.flashVisible$
-      .pipe(
-        tap((_) => {
-          // TODO: Check if the if does anything
-          if (this.visible === OpacityFade.Hide) this.visible = OpacityFade.Visible
-        }),
-        debounceTime(100)
-      )
-      .subscribe((_) => {
-        this.visible = OpacityFade.Hide
-      })
+  constructor(private zone: NgZone, private hostRef: ElementRef) {
+    this.updateOnDropdownVisibility()
+    this.initOutOfZoneListners()
   }
 
   ngOnDestroy(): void {
-    this.flashVisible$.complete()
+    this.dragover$.complete()
   }
 
   @HostBinding('@appOpacityFade')
@@ -36,15 +35,36 @@ export class BookListDropzoneComponent implements OnDestroy {
     return this.visible
   }
 
-  @HostListener('dragover', ['$event'])
-  onDragOver(event: DragEvent) {
-    // TODO: check if file
-    event.preventDefault()
-    this.flashVisible$.next()
+  // NOTE: Run out of Angular
+  private updateOnDropdownVisibility() {
+    const setVisible = () => {
+      if (this.visible === OpacityFade.Hide) {
+        this.zone.run(() => (this.visible = OpacityFade.Visible))
+      }
+    }
+
+    const setHide = () => this.zone.run(() => (this.visible = OpacityFade.Hide))
+
+    this.dragover$.pipe(tap(setVisible), debounceTime(100)).subscribe(setHide)
   }
 
-  @HostListener('drop', ['$event'])
-  onDrop(event: DragEvent) {
+  private initOutOfZoneListners() {
+    const host: HTMLElement = this.hostRef.nativeElement
+
+    this.zone.runOutsideAngular(() => {
+      host.addEventListener('dragover', (event) => this.onDragOver(event))
+      host.addEventListener('drop', (event) => this.onDrop(event))
+    })
+  }
+
+  private onDragOver(event: DragEvent) {
+    event.stopImmediatePropagation()
+    event.preventDefault()
+    this.dragover$.next()
+  }
+
+  private onDrop(event: DragEvent) {
+    event.stopImmediatePropagation()
     event.preventDefault()
     console.log('drop')
   }
