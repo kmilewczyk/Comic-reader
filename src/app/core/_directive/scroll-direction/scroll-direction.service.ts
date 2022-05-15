@@ -40,6 +40,7 @@ export class ScrollDirectionService implements OnDestroy {
 
   unregister(key: string) {
     this.scrollListeners[key]?.subject.complete()
+    delete this.scrollListeners[key]
   }
 
   private onScrollSubscription(key: string) {
