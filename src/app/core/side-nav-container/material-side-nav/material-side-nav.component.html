@@ -3,7 +3,8 @@
     [mode]="isHandset ? 'over' : 'side'" [opened]="isHandset === false">
     <ng-content select="[side-nav]"></ng-content>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <!-- This element here is a main scrolling DOM element  -->
+  <mat-sidenav-content appScrollDirection="side-nav-content">
     <mat-toolbar color="primary" [@appHeightCollapsed]="topToolbarCollapsed$ | async">
       <button menu-toggle type="button" aria-label="Toggle side navigation" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>

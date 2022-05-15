@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { TopToolbarComponent } from './top-toolbar/top-toolbar.component';
 import { ReactiveComponentModule } from '@ngrx/component';
+import { ScrollDirectionModule } from '../_directive/scroll-direction/scroll-direction.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ReactiveComponentModule } from '@ngrx/component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    ReactiveComponentModule
+    ReactiveComponentModule,
+    ScrollDirectionModule
   ],
   exports: [
     SideNavContainerComponent

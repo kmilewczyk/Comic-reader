@@ -6,7 +6,13 @@ export enum HeightCollapsed {
 }
 
 export const heightCollapsed = trigger('appHeightCollapsed', [
-  state(HeightCollapsed.Expanded, style({ height: '*' })),
-  state(HeightCollapsed.Collapsed, style({ height: 0, overflow: 'hidden' })),
-  transition(`* => ${HeightCollapsed.Collapsed}`, [animate('1s')]),
+  state(HeightCollapsed.Expanded, style({ })),
+  state(HeightCollapsed.Collapsed, style({ position: 'unset' })),
+  transition(`${HeightCollapsed.Expanded} => ${HeightCollapsed.Collapsed}`, [
+    animate('0.2s ease-out', style({ transform: 'translateY(-100%)'})),
+  ]),
+  transition(`${HeightCollapsed.Collapsed} => ${HeightCollapsed.Expanded}`, [
+    style({ transform: 'translateY(-100%)', position: '*', }),
+    animate('0.2s ease-in', style({ transform: 'translateY(0%)'})),
+  ]),
 ])
