@@ -1,14 +1,5 @@
-import {
-  Directive,
-  ElementRef,
-  EventEmitter,
-  Input,
-  NgZone,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core'
-import { debounceTime, distinct, mergeAll, of, Subject, tap, throttle } from 'rxjs'
+import { Directive, ElementRef, Input, NgZone, OnDestroy, OnInit } from '@angular/core'
+import { debounceTime, distinct, mergeAll, of, Subject, throttle } from 'rxjs'
 import { ScrollDirectionService } from './scroll-direction.service'
 
 export enum Scroll {
@@ -35,7 +26,7 @@ export class ScrollDirectionDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.scrollService.unregister(this.appScrollDirection!)
+    if (this.appScrollDirection) this.scrollService.unregister(this.appScrollDirection)
     this.scrolled$.complete()
   }
 

@@ -1,19 +1,10 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnDestroy } from '@angular/core'
-import { iif, Observable, of, Subject } from 'rxjs'
-import {
-  debounceTime,
-  distinct,
-  filter,
-  map,
-  mergeAll,
-  startWith,
-  switchMap,
-  tap,
-} from 'rxjs/operators'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { iif, Observable, of } from 'rxjs'
+import { debounceTime, map, startWith, switchMap } from 'rxjs/operators'
 import { DeviceService } from '@app/core/_services/device/device.service'
 import { heightCollapsed, HeightCollapsed } from '@app/core/_animations/height-collapsed.animation'
-import { Scroll } from '@app/core/_directive/scroll-direction/scroll-direction.directive'
-import { ScrollDirectionService } from '@app/core/_directive/scroll-direction/scroll-direction.service'
+import { Scroll } from '@app/core/_directives/scroll-direction/scroll-direction.directive'
+import { ScrollDirectionService } from '@app/core/_directives/scroll-direction/scroll-direction.service'
 
 @Component({
   selector: 'app-material-side-nav',
@@ -22,22 +13,13 @@ import { ScrollDirectionService } from '@app/core/_directive/scroll-direction/sc
   animations: [heightCollapsed],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MaterialSideNavComponent implements AfterViewInit {
+export class MaterialSideNavComponent {
   @Input() sideNavTitle?: string
 
   isHandset$ = this.device.isHandset$
-
   topToolbarCollapsed$?: Observable<HeightCollapsed>
 
   constructor(private device: DeviceService, private scrollService: ScrollDirectionService) {
-    this.initScrollObservables();
-  }
-
-  ngAfterViewInit(): void {
-    // this.initScrollObservables();
-  }
-
-  private initScrollObservables() {
     const userScrolledDown$ = this.scrollService.scroll$('side-nav-content').pipe(
       map((direction) => direction === Scroll.Down),
       debounceTime(100)
@@ -46,7 +28,7 @@ export class MaterialSideNavComponent implements AfterViewInit {
     this.topToolbarCollapsed$ = this.isHandset$.pipe(
       switchMap((isHandset) => iif(() => isHandset, userScrolledDown$, of(false))),
       map((collapsed) => (collapsed ? HeightCollapsed.Collapsed : HeightCollapsed.Expanded)),
-      startWith(HeightCollapsed.Expanded),
+      startWith(HeightCollapsed.Expanded)
     )
   }
 }

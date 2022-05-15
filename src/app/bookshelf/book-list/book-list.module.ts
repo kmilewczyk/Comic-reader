@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatCardModule } from '@angular/material/card'
 import { BookComponent } from '../book/book.component'
-import { ScrollDirectionModule } from '@app/core/_directive/scroll-direction/scroll-direction.module'
 
 @NgModule({
   declarations: [BookListComponent, BookListDropzoneComponent, BookComponent],

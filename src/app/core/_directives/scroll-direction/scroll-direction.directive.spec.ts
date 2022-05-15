@@ -1,5 +1,6 @@
 import { ScrollDirectionDirective } from './scroll-direction.directive';
 
+// TODO: Units Tests
 describe('ScrolledUpDirective', () => {
   it('should create an instance', () => {
     const directive = new ScrollDirectionDirective();
@@ -11,6 +12,4 @@ describe('ScrolledUpDirective', () => {
   it('notifies on scroll up', () => {})
 
   it('notifies on scroll down', () => {})
-
-  it('notifies on scroll stop', () => {})
 });
