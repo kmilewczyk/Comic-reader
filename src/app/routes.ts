@@ -9,4 +9,4 @@ export const devRoutes = [
   },
 ]
 
-export const routes: Routes = [...prodRoutes, ...devRoutes]
+export const routes: Routes = [...devRoutes, ...prodRoutes]

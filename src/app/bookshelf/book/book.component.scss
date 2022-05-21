@@ -1,0 +1,12 @@
+@use 'app-mixins' as m;
+
+:host {
+    @include m.absolute-full();
+}
+
+mat-card {
+    @include m.absolute-center();
+    height: calc(100% - 30px);
+    width: calc(100% - 30px);
+    padding: 10px;
+}

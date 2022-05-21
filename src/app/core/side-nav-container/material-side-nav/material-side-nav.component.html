@@ -1,0 +1,21 @@
+<mat-sidenav-container class="sidenav-container" *ngrxLet="isHandset$ as isHandset">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="isHandset ? 'dialog' : 'navigation'"
+    [mode]="isHandset ? 'over' : 'side'" [opened]="isHandset === false">
+    <ng-content select="[side-nav]"></ng-content>
+  </mat-sidenav>
+  <!-- This element here is a main scrolling DOM element  -->
+  <mat-sidenav-content appScrollDirection="side-nav-content">
+    <mat-toolbar color="primary" [@appHeightCollapsed]="topToolbarCollapsed$ | async">
+      <button menu-toggle type="button" aria-label="Toggle side navigation" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <ng-content select="[top-toolbar]"></ng-content>
+    </mat-toolbar>
+
+    <!-- Content goes here -->
+    <div class="content-wrapper">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

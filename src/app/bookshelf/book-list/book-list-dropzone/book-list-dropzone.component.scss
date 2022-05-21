@@ -1,0 +1,44 @@
+@use "app-mixins" as m;
+
+:host {
+    min-height: 100%;
+    width: 100%;
+}
+
+.backdrop {
+    @include m.blurred-background();
+    @include m.absolute-full-center();
+
+    opacity: 0.5;
+}
+
+.dropdown-hint {
+    @include m.absolute-full-center();
+    position: fixed;
+
+    max-height: 150px;
+    max-width: 150px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    opacity: 0.9;
+    
+    border-radius: 10px;
+    padding: 1rem;
+
+    filter: contrast(0.8);
+
+    mat-icon {
+        width: auto;
+        height: auto;
+        font-size: 5rem;
+    }
+
+    span {
+        width: 100%;
+        text-align: center;
+        font-size: x-large;
+    }
+}
